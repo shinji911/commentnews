@@ -65,13 +65,13 @@ app.get("/scrape", function (req, res) {
           };
         });
     });
-    res.status(200);
+    res.send("done");
   });
 });
 
 // Route for getting all Articles from the db
 app.get("/articles", function (req, res) {
-  db.Article.find({}).sort({ _id:-1 })
+  db.Article.find({})
     .then(function (dbArticle) {
       res.json(dbArticle);
     })

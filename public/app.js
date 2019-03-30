@@ -1,9 +1,10 @@
 function getArticles() {
   $("#articles").empty();
+  $("#comments").empty();
   $.getJSON("/articles", function (data) {    
     for (let i = 0; i < data.length; i++) {
-      $("#articles").append("<h3>" + data[i].title + "</h3> <br />" + data[i].link + "<br />" + data[i].summary + "</p>");
-      $("#articles").append("<button class='viewComment' data-id='" + data[i]._id + "'> View Comments </button>");
+      $("#articles").prepend("<button class='viewComment' data-id='" + data[i]._id + "'> View Comments </button>");
+      $("#articles").prepend("<h3>" + data[i].title + "</h3> <br />" + data[i].link + "<br />" + data[i].summary + "</p>");      
     }
   });
 };
@@ -15,7 +16,7 @@ $(document).on("click", "#scrape", function () {
     method: "GET",
     url: "/scrape"
   }).then(function () {
-    location.reload();
+    getArticles();
   });
 });
 
