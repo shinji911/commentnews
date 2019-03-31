@@ -29,8 +29,10 @@ function viewComment(id) {
     $("#comments").append("<h3>" + data.title + "</h3>");
     if (data.comments) {
       for (let i = 0; i < data.comments.length; i++) {
-        $("#comments").append("<h4>" + data.comments[i].title + "</h4>");
-        $("#comments").append("<p>" + data.comments[i].body + "</p>");
+        let comDiv = $("<div style='border:solid 2px; border-radius:5px'>");
+        comDiv.append("<h4>" + data.comments[i].title + "</h4>");
+        comDiv.append("<p>" + data.comments[i].body + "</p>");
+        $("#comments").append(comDiv);
       }
     }
     $("#comments").append("<input id='titleinput' name='title' >");
