@@ -9,16 +9,10 @@ function getArticles() {
   });
 };
 
-getArticles();
-
-$(document).on("click", "#scrape", function () {
-  $.ajax({
-    method: "GET",
-    url: "/scrape"
-  }).then(function () {
-    getArticles();
-  });
-});
+$.ajax({
+  method: "GET",
+  url: "/scrape"
+}).then(getArticles());
 
 $(document).on("click", ".viewComment", function () {
   $("#comments").empty();
